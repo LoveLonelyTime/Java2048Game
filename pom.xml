@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.lovelonelytime.java2048game</groupId>
+	<artifactId>java2048game</artifactId>
+	<version>1.0.0</version>
+
+	<name>Java2048Game</name>
+	<description>Java语言编写的2048游戏</description>
+	<url>https://github.com/LoveLonelyTime/Java2048Game</url>
+	<organization>
+		<name>LoveLonelyTime</name>
+		<url>https://github.com/LoveLonelyTime</url>
+	</organization>
+	<scm>
+		<url>https://github.com/LoveLonelyTime/Java2048Game</url>
+		<connection>scm:git:https://github.com/LoveLonelyTime/Java2048Game.git</connection>
+		<developerConnection>scm:git:https://github.com/LoveLonelyTime/Java2048Game.git</developerConnection>
+	</scm>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/LoveLonelyTime/Java2048Game/issues</url>
+	</issueManagement>
+	<developers>
+		<developer>
+			<id>LoveLonelyTime</id>
+			<name>JiaHonghao</name>
+			<email>jiahonghao2002@163.com</email>
+			<url>https://github.com/LoveLonelyTime</url>
+			<organization>LoveLonelyTime</organization>
+			<organizationUrl>https://github.com/LoveLonelyTime</organizationUrl>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+</project>
