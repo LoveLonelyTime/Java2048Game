@@ -3,8 +3,9 @@ package com.github.lovelonelytime.java2048game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -37,7 +38,17 @@ public class GameGUI extends JFrame {
     /**
      * 计分板
      */
-    private ScoreBoardComponent scoreBoardComponent;
+    private ValueBoardComponent scoreBoardComponent;
+
+    /**
+     * 计步板
+     */
+    private ValueBoardComponent stepBoardComponent;
+
+    /**
+     * 游戏画板
+     */
+    private GamePanel gamePanel;
 
     /**
      * 启动窗口
@@ -53,7 +64,7 @@ public class GameGUI extends JFrame {
         }
         // 设置界面
         Container contentPane = this.getContentPane();
-        contentPane.setLayout(new FlowLayout());
+        contentPane.setLayout(new BorderLayout());
 
         JPanel textPanel = new JPanel(new BorderLayout());
         JPanel leftTextPanel = new JPanel(new BorderLayout());
@@ -69,16 +80,28 @@ public class GameGUI extends JFrame {
         textPanel.add(leftTextPanel, BorderLayout.WEST);
 
         JPanel rightTextPanel = new JPanel(new BorderLayout());
-        scoreBoardComponent = new ScoreBoardComponent();
+        scoreBoardComponent = new ValueBoardComponent(LanguageLoader.getString("game.ui.currentScore"));
+        stepBoardComponent = new ValueBoardComponent(LanguageLoader.getString("game.ui.currentStep"));
         rightTextPanel.add(scoreBoardComponent, BorderLayout.NORTH);
+        rightTextPanel.add(stepBoardComponent, BorderLayout.CENTER);
         JButton startButton = new JButton(LanguageLoader.getString("game.ui.startGame"));
+        startButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameGUI.this.gamePanel.newGame();
+            }
+        });
         rightTextPanel.add(startButton, BorderLayout.SOUTH);
         textPanel.add(rightTextPanel, BorderLayout.EAST);
 
-        contentPane.add(textPanel);
+        contentPane.add(textPanel, BorderLayout.NORTH);
+
+        this.gamePanel = new GamePanel(scoreBoardComponent, stepBoardComponent);
+        contentPane.add(gamePanel, BorderLayout.SOUTH);
+
         // 设置窗口尺寸和位置
         this.pack();
-        this.setResizable(false);
         // 窗口居中
         this.setLocationRelativeTo(null);
         // 窗口退出时销毁
@@ -92,5 +115,6 @@ public class GameGUI extends JFrame {
             }
         });
         GameGUI.LOGGER.info(LanguageLoader.getString("game.log.windowLoaded"));
+        gamePanel.newGame();
     }
 }

@@ -15,7 +15,7 @@ import javax.swing.JComponent;
  * 
  * @author LoveLonelyTime
  */
-public class ScoreBoardComponent extends JComponent {
+public class ValueBoardComponent extends JComponent {
     /**
      * serialVersionUID
      */
@@ -42,9 +42,25 @@ public class ScoreBoardComponent extends JComponent {
     private static final int ARC = 10;
 
     /**
-     * 分数
+     * 值
      */
-    private int score;
+    private int value;
+
+    /**
+     * 标题
+     */
+    private String title;
+
+    /**
+     * 构造器设置标题
+     * 
+     * @param title
+     *            标题
+     */
+    public ValueBoardComponent(String title) {
+        this.title = title;
+        setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT));
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -55,45 +71,40 @@ public class ScoreBoardComponent extends JComponent {
         // 设置抗锯齿
         graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         // 绘制圆角矩形
-        graphics2d.setColor(ScoreBoardComponent.BACKGROUND_COLOR);
-        graphics2d.fillRoundRect(0, 0, this.getWidth(), this.getHeight(), ScoreBoardComponent.ARC,
-                ScoreBoardComponent.ARC);
+        graphics2d.setColor(ValueBoardComponent.BACKGROUND_COLOR);
+        graphics2d.fillRoundRect(0, 0, this.getWidth(), this.getHeight(), ValueBoardComponent.ARC, ValueBoardComponent.ARC);
         // 绘制文字
         graphics2d.setColor(Color.WHITE);
-        graphics2d.setFont(ScoreBoardComponent.FONT);
+        graphics2d.setFont(ValueBoardComponent.FONT);
         FontMetrics fontMetrics = graphics2d.getFontMetrics();
-        graphics2d.drawString(LanguageLoader.getString("game.ui.currentScore"),
-                (this.getWidth() - fontMetrics.stringWidth(LanguageLoader.getString("game.ui.currentScore"))) / 2,
+        // 绘制标题
+        graphics2d.drawString(title, (this.getWidth() - fontMetrics.stringWidth(title)) / 2,
                 (this.getHeight() - (fontMetrics.getAscent() + fontMetrics.getDescent())) / 2 + fontMetrics.getAscent()
                         - 15);
-        graphics2d.drawString(String.valueOf(this.getScore()),
-                (this.getWidth() - fontMetrics.stringWidth(String.valueOf(this.getScore()))) / 2,
+        // 绘制值
+        graphics2d.drawString(String.valueOf(value),
+                (this.getWidth() - fontMetrics.stringWidth(String.valueOf(value))) / 2,
                 (this.getHeight() - (fontMetrics.getAscent() + fontMetrics.getDescent())) / 2 + fontMetrics.getAscent()
                         + 10);
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        // 返回最佳尺寸
-        return new Dimension(ScoreBoardComponent.PREFERRED_WIDTH, ScoreBoardComponent.PREFERRED_HEIGHT);
+    /**
+     * 取值
+     * 
+     * @return 值
+     */
+    public int getValue() {
+        return value;
     }
 
     /**
-     * 取得分
+     * 设置值
      * 
-     * @return 得分
+     * @param value
+     *            值
      */
-    public int getScore() {
-        return score;
-    }
-
-    /**
-     * 设置得分
-     * 
-     * @param score
-     *            得分
-     */
-    public void setScore(int score) {
-        this.score = score;
+    public void setValue(int value) {
+        this.value = value;
+        repaint();
     }
 }
