@@ -90,7 +90,7 @@
 							<mainClass>com.github.lovelonelytime.java2048game.Main</mainClass>
 						</manifest>
 					</archive>
-					<finalName>Java2048Game-${project.version}-source</finalName>
+					<finalName>Java2048Game-${project.version}-final</finalName>
 				</configuration>
 			</plugin>
 		</plugins>

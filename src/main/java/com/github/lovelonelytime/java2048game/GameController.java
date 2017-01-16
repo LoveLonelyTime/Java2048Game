@@ -7,9 +7,25 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+/**
+ * 游戏控制器
+ * 
+ * @author LoveLonelyTime
+ */
 public class GameController {
+    /**
+     * 计分板
+     */
     private ValueBoardComponent scoreBoardComponent;
+    
+    /**
+     * 计步板
+     */
     private ValueBoardComponent stepBoardComponent;
+    
+    /**
+     * 区域数组
+     */
     private Block[][] board = new Block[4][4];
 
     /**

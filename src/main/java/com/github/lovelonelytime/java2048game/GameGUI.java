@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
 /**
  * 游戏窗口
  * 
- * @author JiaHonghao
+ * @author LoveLonelyTime
  */
 public class GameGUI extends JFrame {
 

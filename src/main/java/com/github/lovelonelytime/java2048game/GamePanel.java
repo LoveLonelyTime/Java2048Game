@@ -12,16 +12,30 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+/**
+ * 游戏画板
+ * 
+ * @author LoveLonelyTime
+ */
 public class GamePanel extends JPanel {
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = 2349745500491904868L;
 
+    /**
+     * 背景颜色
+     */
     private static final Color BACKGROUND_COLOR = new Color(187, 173, 160);
 
+    /**
+     * 方块间隔
+     */
     private static final int MARGIN = 10;
 
+    /**
+     * 鼠标偏移距离
+     */
     private static final int MOUSE_OffSET = 70;
 
     /**
@@ -32,10 +46,25 @@ public class GamePanel extends JPanel {
      * 组件高度
      */
     private static final int PREFERRED_HEIGHT = 330;
+
+    /**
+     * 上一次点击位置
+     */
     private Point lastPressed = new Point(0, 0);
 
+    /**
+     * 游戏控制器
+     */
     private GameController gameController;
 
+    /**
+     * 构造器
+     * 
+     * @param scoreBoardComponent
+     *            计分板
+     * @param stepBoardComponent
+     *            计步板
+     */
     public GamePanel(ValueBoardComponent scoreBoardComponent, ValueBoardComponent stepBoardComponent) {
         gameController = new GameController(scoreBoardComponent, stepBoardComponent);
         setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT));
@@ -72,6 +101,9 @@ public class GamePanel extends JPanel {
         });
     }
 
+    /**
+     * 新游戏
+     */
     public void newGame() {
         gameController.newGame();
         repaint();

@@ -8,6 +8,11 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+/**
+ * 数字方块枚举类
+ * 
+ * @author LoveLonelyTime
+ */
 public enum Block {
     BLOCK_NULL(new Color(205, 193, 180), new Color(205, 193, 180), 0), BLOCK_2(new Color(238, 228, 218),
             new Color(119, 110, 101),
@@ -21,11 +26,21 @@ public enum Block {
                                                     512), BLOCK_1024(new Color(237, 197, 63), new Color(249, 246, 242),
                                                             1024), BLOCK_2048(new Color(237, 194, 46),
                                                                     new Color(249, 246, 242), 2048);
-
+    /**
+     * 方块宽度
+     */
     public static final int WIDTH = 70;
+
+    /**
+     * 方块高度
+     */
     public static final int HEIGHT = 70;
+
+    /**
+     * 文字字体
+     */
     private static final Font FONT = new Font(Font.DIALOG, Font.BOLD, 30);
-    
+
     /**
      * 背景色
      */
